@@ -1,7 +1,20 @@
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-export default function Title() {
+import { useAppDispatch } from "@/redux/store";
+import { updateCategoryTitle } from "@/redux/vehicle-slice";
+
+interface Props {
+  id: string;
+  title: string;
+}
+
+export default function Title({ id, title }: Props) {
+  const dispatch = useAppDispatch();
+
+  function onChangeHandler(e: any) {
+    dispatch(updateCategoryTitle({ id, title: e.target.value }));
+  }
   return (
     <Box
       className="title"
@@ -18,7 +31,9 @@ export default function Title() {
         variant="standard"
         type="text"
         name="title"
+        value={title}
         sx={{ width: "100%", p: 0 }}
+        onChange={onChangeHandler}
       />
     </Box>
   );

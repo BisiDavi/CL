@@ -84,9 +84,28 @@ const VehicleSlice = createSlice({
         state.vehicle.categories.splice(categoryIndex, 1);
       }
     },
+    updateCategoryTitle(
+      state,
+      action: PayloadAction<{ id: string; title: string }>
+    ) {
+      if (
+        state.vehicle &&
+        state.vehicle?.categories &&
+        state.vehicle?.categories.length > 0
+      ) {
+        const categoryIdx = state.vehicle.categories.findIndex(
+          (category) => category.id === action.payload.id
+        );
+        state.vehicle.categories[categoryIdx].title = action.payload.title;
+      }
+    },
   },
 });
 
-export const { selectVehicle, addProductCategory, deleteProductCategory } =
-  VehicleSlice.actions;
+export const {
+  selectVehicle,
+  addProductCategory,
+  deleteProductCategory,
+  updateCategoryTitle,
+} = VehicleSlice.actions;
 export default VehicleSlice.reducer;

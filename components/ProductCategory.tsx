@@ -70,7 +70,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
           onClick={deleteProductCategoryHandler}
         />
         <ImageView />
-        <Title />
+        <Title id={category.id} title={category.title} />
         <CategoryList />
         <ControlButton text="save" style={{ color: "green" }} />
       </Box>
