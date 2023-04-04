@@ -2,8 +2,11 @@ import Box from "@mui/material/Box";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 import ControlButton from "@/components/ControlButton";
+import { useAppDispatch } from "@/redux/store";
 
 export default function CategoryList() {
+  const dispatch = useAppDispatch();
+
   return (
     <Box
       sx={{

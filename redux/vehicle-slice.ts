@@ -53,7 +53,7 @@ const VehicleSlice = createSlice({
                   image: "",
                   x: categoryDimension.x,
                   y: categoryDimension.y,
-                  vehicleSpecification: [],
+                  categoryList: [],
                 },
               ]
             : [
@@ -64,7 +64,7 @@ const VehicleSlice = createSlice({
                   image: "",
                   x: categoryDimension.x,
                   y: categoryDimension.y,
-                  vehicleSpecification: [],
+                  categoryList: [],
                 },
               ];
         state.vehicle = {
@@ -98,6 +98,9 @@ const VehicleSlice = createSlice({
         );
         state.vehicle.categories[categoryIdx].title = action.payload.title;
       }
+    },
+    updateCategoryList(state, action) {
+      
     },
   },
 });

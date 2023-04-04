@@ -4,7 +4,7 @@ export type categoriesType = {
   x: number;
   y: number;
   id: string;
-  vehicleSpecification: string[];
+  categoryList: string[];
 };
 
 export type vehicleType = {
