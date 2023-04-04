@@ -29,7 +29,7 @@ export default function PermanentDrawerLeft() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Permanent drawer
+            CL Demo
           </Typography>
         </Toolbar>
       </AppBar>
@@ -48,22 +48,7 @@ export default function PermanentDrawerLeft() {
         <Toolbar />
         <Divider />
         <List>
-          {["Select a Product", "Starred", "Send email", "Drafts"].map(
-            (text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            )
-          )}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["Select a Product"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -74,34 +59,42 @@ export default function PermanentDrawerLeft() {
             </ListItem>
           ))}
         </List>
+        <Divider />
       </Drawer>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
           display: "flex",
+          justifyContent: "space-around",
           margin: "100px 0px",
           bgcolor: "background.default",
           p: 3,
         }}
       >
-        <Toolbar />
         {productsJson.products.map((product) => (
           <Box
             key={product.name}
             component="div"
             sx={{
               margin: "0px 10px",
+              border: "1px solid black",
+              padding: "20px",
+              borderRadius: "5px",
             }}
             className="product"
           >
             <Image
               src={product.image}
-              height={500}
-              width={500}
+              height={400}
+              width={400}
               alt={product.name}
             />
-            <Typography>{product.name}</Typography>
+            <Typography
+              sx={{ textAlign: "center", fontWeight: 700, fontSize: 24 }}
+            >
+              {product.name}
+            </Typography>
           </Box>
         ))}
       </Box>
