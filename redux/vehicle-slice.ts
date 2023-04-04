@@ -16,7 +16,11 @@ const VehicleSlice = createSlice({
       state.vehicle =
         state.vehicle === null
           ? { name: action.payload.name, image: action.payload.image }
-          : { ...state.vehicle, name: action.payload.name };
+          : {
+              ...state.vehicle,
+              name: action.payload.name,
+              image: action.payload.image,
+            };
     },
   },
 });

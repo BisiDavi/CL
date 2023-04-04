@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Box from "@mui/material/Box";
 import Image from "next/image";
 
@@ -11,20 +12,23 @@ export default function SchematicsEditor() {
       <Box
         sx={{
           width: "100%",
-          margin: "20px auto",
+          margin: "80px auto",
           display: "flex",
           justifyContent: "center",
         }}
       >
         {vehicle?.image && (
-          <Image
-            src={vehicle?.image}
-            height={600}
-            width={600}
-            alt={vehicle?.name}
-          />
+          <img className="vehicle" src={vehicle?.image} alt={vehicle?.name} />
         )}
       </Box>
+      <style jsx>
+        {`
+          img.vehicle {
+            width: 80%;
+            height: 600px;
+          }
+        `}
+      </style>
     </Layout>
   );
 }
