@@ -5,14 +5,15 @@ import Typography from "@mui/material/Typography";
 import productsJson from "@/json/products.json";
 import SelectVehicle from "@/components/SelectVehicle";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { selectVehicle } from "@/redux/vehicle-slice";
+import type { selectVehicle } from "@/redux/vehicle-slice";
+import type { selectVehicleHandlerType } from "@/types";
 
 export default function SelectVehicleView() {
   const dispatch = useAppDispatch();
   const { vehicle } = useAppSelector((state) => state.vehicle);
 
-  function selectVehicleHandler(vehicle: string) {
-    dispatch(selectVehicle(vehicle));
+  function selectVehicleHandler({ name, image }: selectVehicleHandlerType) {
+    dispatch(selectVehicle({ name, image }));
   }
 
   return (
