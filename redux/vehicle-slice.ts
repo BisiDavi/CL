@@ -24,9 +24,16 @@ const VehicleSlice = createSlice({
     },
     addProductCategory(state) {
       if (state.vehicle) {
+        const vehicleCategories =
+          state.vehicle.categories === undefined
+            ? [{ title: "", image: "", vehicleSpecification: [] }]
+            : [
+                ...state.vehicle.categories,
+                { title: "", image: "", vehicleSpecification: [] },
+              ];
         state.vehicle = {
           ...state.vehicle,
-          categories: [{ title: "", image: "", vehicleSpecification: [] }],
+          categories: vehicleCategories,
         };
       }
     },
