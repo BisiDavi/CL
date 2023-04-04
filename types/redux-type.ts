@@ -1,4 +1,4 @@
-type labelType = {
+type categoriesType = {
   title: string;
   image: string;
   vehicleSpecification: string[];
@@ -7,7 +7,7 @@ type labelType = {
 export type vehicleType = {
   name: string;
   image: string;
-  labels?: labelType[];
+  categories?: categoriesType[];
 } | null;
 
 export type stateType = {

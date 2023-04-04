@@ -7,8 +7,16 @@ import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
 import AddIcon from "@mui/icons-material/Add";
 
+import { useAppDispatch } from "@/redux/store";
+import { addProductCategory } from "@/redux/vehicle-slice";
+
 export default function LayoutDrawer() {
   const drawerWidth = 240;
+  const dispatch = useAppDispatch();
+
+  function addProductCategoryHandler() {
+    dispatch(addProductCategory());
+  }
 
   return (
     <Drawer
@@ -28,9 +36,9 @@ export default function LayoutDrawer() {
       <List>
         {["Add a Product Category"].map((text) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={addProductCategoryHandler}>
               <AddIcon />
-              <ListItemText primary={text} sx={{ fontSize: 10 }} />
+              <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}

@@ -22,8 +22,16 @@ const VehicleSlice = createSlice({
               image: action.payload.image,
             };
     },
+    addProductCategory(state) {
+      if (state.vehicle) {
+        state.vehicle = {
+          ...state.vehicle,
+          categories: [{ title: "", image: "", vehicleSpecification: [] }],
+        };
+      }
+    },
   },
 });
 
-export const { selectVehicle } = VehicleSlice.actions;
+export const { selectVehicle, addProductCategory } = VehicleSlice.actions;
 export default VehicleSlice.reducer;
