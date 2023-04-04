@@ -28,16 +28,41 @@ const VehicleSlice = createSlice({
     },
     addProductCategory(state) {
       if (state.vehicle) {
+        const categoryDimension =
+          state.vehicle.categories === undefined
+            ? { x: 500, y: -200 }
+            : {
+                x:
+                  50 +
+                  state.vehicle.categories[state.vehicle.categories.length - 1]
+                    .x,
+                y:
+                  100 +
+                  state.vehicle.categories[state.vehicle.categories.length - 1]
+                    .y,
+              };
         const vehicleCategories =
           state.vehicle.categories === undefined
-            ? [{
-              id: uuidv4(),
-               title: "", image: "", vehicleSpecification: [] }]
+            ? [
+                {
+                  id: uuidv4(),
+                  title: "",
+                  image: "",
+                  x: categoryDimension.x,
+                  y: categoryDimension.y,
+                  vehicleSpecification: [],
+                },
+              ]
             : [
                 ...state.vehicle.categories,
                 {
-              id: uuidv4(),
-              title: "", image: "", vehicleSpecification: [] },
+                  id: uuidv4(),
+                  title: "",
+                  image: "",
+                  x: categoryDimension.x,
+                  y: categoryDimension.y,
+                  vehicleSpecification: [],
+                },
               ];
         state.vehicle = {
           ...state.vehicle,

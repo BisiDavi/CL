@@ -1,6 +1,8 @@
 type categoriesType = {
   title: string;
   image: string;
+  x: number;
+  y: number;
   vehicleSpecification: string[];
 };
 
