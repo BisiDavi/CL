@@ -50,6 +50,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
           backgroundColor: "white",
           position: "absolute",
           cursor: "pointer",
+          zIndex: 5,
         }}
         ref={nodeRef}
       >
@@ -64,6 +65,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
             top: -10,
             right: -10,
             backgroundColor: "white",
+            zIndex: 10,
           }}
           onClick={deleteProductCategoryHandler}
         />
