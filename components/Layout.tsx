@@ -12,23 +12,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-
-import productsJson from "@/json/products.json";
-import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { selectVehicle } from "@/redux/vehicle-slice";
-import SelectVehicle from "@/components/SelectVehicle";
-import { Button } from "@mui/material";
+import { PropsWithChildren } from "react";
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft() {
-  const dispatch = useAppDispatch();
-  const { vehicle } = useAppSelector((state) => state.vehicle);
-
-  function selectVehicleHandler(vehicle: string) {
-    dispatch(selectVehicle(vehicle));
-  }
-
+export default function Layout({ children }: PropsWithChildren) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -70,61 +58,7 @@ export default function PermanentDrawerLeft() {
         </List>
         <Divider />
       </Drawer>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          display: "flex",
-          flexDirection: "column",
-          margin: "50px 0px",
-          bgcolor: "background.default",
-          p: 3,
-        }}
-      >
-        <Typography
-          sx={{ textAlign: "center", fontWeight: 700, fontSize: 30, m: 3 }}
-        >
-          Select a Vehicle
-        </Typography>
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
-          {productsJson.products.map((product) => (
-            <SelectVehicle
-              key={product.name}
-              product={product}
-              selectVehicleHandler={selectVehicleHandler}
-              vehicle={vehicle?.name}
-            />
-          ))}
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            mt: 5,
-            mr: 4,
-          }}
-          component="div"
-        >
-          {vehicle?.name && (
-            <Button
-              variant="contained"
-              sx={{
-                maxWidth: 300,
-                m: 4,
-              }}
-            >
-              Proceed with {vehicle?.name} Schematics →
-            </Button>
-          )}
-        </Box>
-      </Box>
+      {children}
     </Box>
   );
 }

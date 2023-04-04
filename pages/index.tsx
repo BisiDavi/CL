@@ -1,9 +1,10 @@
-import PermanentDrawerLeft from "@/components/Layout";
+import Layout from "@/components/Layout";
+import SelectVehicleView from "@/components/SelectVehicleView";
 
 export default function Home() {
   return (
-    <>
-      <PermanentDrawerLeft />
-    </>
+    <Layout>
+      <SelectVehicleView />
+    </Layout>
   );
 }
