@@ -4,12 +4,13 @@ import Box from "@mui/material/Box";
 import { useAppSelector } from "@/redux/store";
 import Layout from "@/components/Layout";
 import Productlabel from "@/components/ProductCategory";
+import LayoutDrawer from "@/components/LayoutDrawer";
 
 export default function SchematicsEditor() {
   const { vehicle } = useAppSelector((state) => state.vehicle);
 
   return (
-    <Layout title="Schematics Editor">
+    <Layout title="Schematics Editor" drawer={<LayoutDrawer />}>
       <Box
         sx={{
           width: "100%",
