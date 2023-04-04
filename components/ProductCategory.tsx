@@ -40,6 +40,19 @@ export default function ProductCategory() {
         }}
         ref={nodeRef}
       >
+        <ControlButton
+          text="❌"
+          style={{
+            borderRadius: "50%",
+            height: "20px",
+            width: "20px",
+            padding: "15px",
+            position: "absolute",
+            top: -10,
+            right: -10,
+            backgroundColor: "white",
+          }}
+        />
         <ImageView />
         <Title />
         <CategoryList />

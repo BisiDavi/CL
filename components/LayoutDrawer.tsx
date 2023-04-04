@@ -3,10 +3,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import List from "@mui/material/List";
+import AddIcon from "@mui/icons-material/Add";
 
 export default function LayoutDrawer() {
   const drawerWidth = 240;
@@ -27,13 +26,11 @@ export default function LayoutDrawer() {
       <Toolbar />
       <Divider />
       <List>
-        {["Select a Vehicle"].map((text) => (
+        {["Add a Product Category"].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <AddIcon />
+              <ListItemText primary={text} sx={{ fontSize: 10 }} />
             </ListItemButton>
           </ListItem>
         ))}
