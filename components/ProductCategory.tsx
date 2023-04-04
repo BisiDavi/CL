@@ -16,7 +16,6 @@ type ProductCategoryType = {
 };
 
 export default function ProductCategory({ category }: ProductCategoryType) {
-  console.log("category", category);
   const dispatch = useAppDispatch();
   const [currentPosition, setCurrentPosition] = useState<Position>({
     xRate: category.x,
