@@ -69,7 +69,7 @@ export default function SelectVehicleView() {
         component="div"
       >
         {vehicle?.name && (
-          <Link href={`/schematics-editor?vehicle=${vehicle?.name}`}>
+          <Link href="/schematics-editor">
             <Button
               variant="contained"
               sx={{
