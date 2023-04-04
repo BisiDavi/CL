@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import productsJson from "@/json/products.json";
 import SelectVehicle from "@/components/SelectVehicle";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import type { selectVehicle } from "@/redux/vehicle-slice";
+import { selectVehicle } from "@/redux/vehicle-slice";
 import type { selectVehicleHandlerType } from "@/types";
 
 export default function SelectVehicleView() {
