@@ -73,7 +73,10 @@ const VehicleSlice = createSlice({
       }
     },
     deleteProductCategory(state, action: PayloadAction<string>) {
-      if (state?.vehicle?.categories) {
+      if (
+        state?.vehicle?.categories &&
+        state?.vehicle?.categories?.length > 0
+      ) {
         const categoryIndex = state.vehicle.categories.findIndex(
           (category) => category.id === action.payload
         );
