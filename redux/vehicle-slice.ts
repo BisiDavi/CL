@@ -1,19 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-type labelType = {
-  title: string;
-  image: string;
-  vehicleSpecification: string[];
-};
-
-type productType = {
-  name: string;
-  labels?: labelType[];
-} | null;
-
-type stateType = {
-  vehicle: productType;
-};
+import { stateType } from "@/types/redux-type";
 
 const initialState: stateType = {
   vehicle: null,

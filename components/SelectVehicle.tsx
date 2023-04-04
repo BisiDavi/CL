@@ -5,7 +5,7 @@ import Image from "next/image";
 interface Props {
   product: { name: string; image: string };
   selectVehicleHandler: (vehicle: string) => void;
-  vehicle: string | null;
+  vehicle: string | undefined;
 }
 
 export default function SelectVehicle({
@@ -20,7 +20,7 @@ export default function SelectVehicle({
       component="div"
       sx={{
         margin: "0px 10px",
-        border: "1px solid black",
+        border: vehicle === product.name ? "2px solid red" : "1px solid black",
         padding: "20px",
         borderRadius: "5px",
       }}

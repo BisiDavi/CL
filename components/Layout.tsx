@@ -98,7 +98,7 @@ export default function PermanentDrawerLeft() {
               key={product.name}
               product={product}
               selectVehicleHandler={selectVehicleHandler}
-              vehicle={vehicle}
+              vehicle={vehicle?.name}
             />
           ))}
         </Box>
