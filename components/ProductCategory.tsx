@@ -6,9 +6,9 @@ import ImageView from "@/components/ImageView";
 import Title from "@/components/Title";
 import CategoryList from "@/components/CategoryList";
 import ControlButton from "@/components/ControlButton";
-import type { Position } from "@/types";
 import { useAppDispatch } from "@/redux/store";
 import { deleteProductCategory } from "@/redux/vehicle-slice";
+import type { Position } from "@/types";
 import type { categoriesType } from "@/types/redux-type";
 
 type ProductCategoryType = {

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { stateType } from "@/types/redux-type";
+import type { stateType } from "@/types/redux-type";
 
 const initialState: stateType = {
   vehicle: null,
@@ -29,7 +29,8 @@ const VehicleSlice = createSlice({
     addProductCategory(state) {
       if (state.vehicle) {
         const categoryDimension =
-          state.vehicle?.categories === undefined
+          state.vehicle?.categories === undefined ||
+          state.vehicle?.categories.length === 0
             ? { x: 500, y: -200 }
             : {
                 x:
