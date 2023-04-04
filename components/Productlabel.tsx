@@ -1,9 +1,10 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
+import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Box from "@mui/material/Box";
 import { useState, useRef } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
+import ControlButton from "./ControlButton";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -13,8 +14,8 @@ type Position = {
 };
 export default function Productlabel() {
   const [currentPosition, setCurrentPosition] = useState<Position>({
-    xRate: 150,
-    yRate: 150,
+    xRate: 500,
+    yRate: -200,
   });
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
@@ -54,43 +55,33 @@ export default function Productlabel() {
           <img src="" alt="" />
           <input type="file" />
         </Box>
-        <Box className="title" sx={{ m: "10px 0px", display: "flex" }}>
+        <Box
+          className="title"
+          sx={{
+            m: "10px 0px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 1,
+          }}
+        >
           <TextField
             label="Title"
-            variant="outlined"
+            variant="standard"
             type="text"
             name="title"
-            sx={{ height: 10, width: "85%" }}
+            sx={{ width: "100%", p: 0 }}
           />
-          <Box sx={{ width: "10%", display: "flex", flexDirection: "column" }}>
-            <Button
-              sx={{
-                minWidth: "unset",
-                px: 1,
-                py: 0.5,
-                mb: 2,
-                mx: 1,
-                border: "1px solid black",
-              }}
-            >
-              ❌
-            </Button>
-            <Button
-              sx={{
-                minWidth: "unset",
-                px: 1,
-                py: 0.5,
-                mb: 2,
-                mx: 1,
-                my: 1,
-                border: "1px solid black",
-              }}
-            >
-              ✅
-            </Button>
-          </Box>
         </Box>
-        <Box sx={{ m: "10px 0px", display: "flex" }}>
+        <Box
+          sx={{
+            m: "10px 0px",
+            display: "flex",
+            alignItems: "start",
+            justifyContent: "space-between",
+            gap: 1,
+          }}
+        >
           <TextareaAutosize
             aria-label="description"
             placeholder="Add Fluid description"
@@ -102,13 +93,10 @@ export default function Productlabel() {
               display: "flex",
               flexDirection: "column",
               gap: 1,
-              width: "10%",
-              border: "1px solid black",
             }}
           >
-            <Button>+</Button>
-            <Button>❌</Button>
-            <Button>✅</Button>
+            <ControlButton text="+" />
+            <ControlButton text="❌" />
           </Box>
         </Box>
       </Box>
