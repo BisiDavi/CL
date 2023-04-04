@@ -1,0 +1,6 @@
+{
+  "products": [
+    { "name": "Truck", "image": "/truck.webp" },
+    { "name": "Car", "image": "/car.webp" }
+  ]
+}
