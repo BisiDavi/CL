@@ -36,6 +36,7 @@ export default function ProductCategory() {
           maxWidth: "280px",
           backgroundColor: "white",
           position: "absolute",
+          cursor: "pointer",
         }}
         ref={nodeRef}
       >

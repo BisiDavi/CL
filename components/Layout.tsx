@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,18 +11,20 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { PropsWithChildren } from "react";
-import Link from "next/link";
-
-const drawerWidth = 240;
+import type { PropsWithChildren } from "react";
 
 interface Props {
   title?: string;
+  drawer?: boolean;
 }
 
-export default function Layout({ children, title }: PropsWithChildren<Props>) {
+export default function Layout({
+  children,
+  title,
+  drawer,
+}: PropsWithChildren<Props>) {
+  const drawerWidth = drawer ? 240 : 0;
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -48,34 +51,36 @@ export default function Layout({ children, title }: PropsWithChildren<Props>) {
           )}
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
+      {drawer && (
+        <Drawer
+          sx={{
             width: drawerWidth,
-            boxSizing: "border-box",
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        <Divider />
-        <List>
-          {["Select a Vehicle"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-      </Drawer>
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+            },
+          }}
+          variant="permanent"
+          anchor="left"
+        >
+          <Toolbar />
+          <Divider />
+          <List>
+            {["Select a Vehicle"].map((text) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <MailIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+        </Drawer>
+      )}
       {children}
     </Box>
   );

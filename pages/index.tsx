@@ -4,7 +4,7 @@ import SelectVehicleView from "@/components/SelectVehicleView";
 export default function Home() {
   return (
     <Layout>
-      <SelectVehicleView />
+      <SelectVehicleView  />
     </Layout>
   );
 }

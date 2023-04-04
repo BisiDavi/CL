@@ -24,6 +24,7 @@ export default function SelectVehicle({
         border: vehicle === name ? "2px solid red" : "1px solid black",
         padding: "20px",
         borderRadius: "5px",
+        cursor: "pointer",
       }}
       className="product"
       onClick={selectVehicleHandler}
