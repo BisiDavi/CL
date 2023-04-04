@@ -55,7 +55,7 @@ export default function PermanentDrawerLeft() {
         <Toolbar />
         <Divider />
         <List>
-          {["Select a Product"].map((text, index) => (
+          {["Select a Vehicle"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -73,39 +73,53 @@ export default function PermanentDrawerLeft() {
         sx={{
           flexGrow: 1,
           display: "flex",
-          justifyContent: "space-around",
-          margin: "100px 0px",
+          flexDirection: "column",
+          margin: "50px 0px",
           bgcolor: "background.default",
           p: 3,
         }}
       >
-        {productsJson.products.map((product) => (
-          <Box
-            key={product.name}
-            title={`Select ${product.name}`}
-            component="div"
-            sx={{
-              margin: "0px 10px",
-              border: "1px solid black",
-              padding: "20px",
-              borderRadius: "5px",
-            }}
-            className="product"
-            onClick={() => selectVehicleHandler(product.name)}
-          >
-            <Image
-              src={product.image}
-              height={300}
-              width={400}
-              alt={product.name}
-            />
-            <Typography
-              sx={{ textAlign: "center", fontWeight: 700, fontSize: 24 }}
+        <Typography
+          sx={{ textAlign: "center", fontWeight: 700, fontSize: 30, m: 3 }}
+        >
+          Select a Vehicle
+        </Typography>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+        >
+          {productsJson.products.map((product) => (
+            <Box
+              key={product.name}
+              title={`Select ${product.name}`}
+              component="div"
+              sx={{
+                margin: "0px 10px",
+                border: "1px solid black",
+                padding: "20px",
+                borderRadius: "5px",
+              }}
+              className="product"
+              onClick={() => selectVehicleHandler(product.name)}
             >
-              {product.name}
-            </Typography>
-          </Box>
-        ))}
+              <Image
+                src={product.image}
+                height={300}
+                width={400}
+                alt={product.name}
+              />
+              <Typography
+                sx={{ textAlign: "center", fontWeight: 700, fontSize: 24 }}
+              >
+                {product.name}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
       </Box>
     </Box>
   );
