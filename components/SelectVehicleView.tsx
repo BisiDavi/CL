@@ -44,6 +44,8 @@ export default function SelectVehicleView() {
       >
         {productsJson.products.map((product) => {
           const { name, image } = product;
+          const _name = vehicle?.name === name ? "" : name;
+          const _img = vehicle?.image === image ? "" : image;
           return (
             <SelectVehicle
               key={name}
@@ -51,8 +53,8 @@ export default function SelectVehicleView() {
               vehicle={vehicle?.name}
               selectVehicleHandler={() =>
                 selectVehicleHandler({
-                  name,
-                  image,
+                  name: _name,
+                  image: _img,
                 })
               }
             />
