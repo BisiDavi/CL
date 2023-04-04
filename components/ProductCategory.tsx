@@ -2,15 +2,16 @@ import Box from "@mui/material/Box";
 import { useState, useRef } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 
-import ProductLabelImageView from "@/components/ProductLabelImageView";
-import ProductTitle from "@/components/ProductTitle";
-import ProductCategoryList from "@/components/ProductCategoryList";
+import ImageView from "@/components/ImageView";
+import Title from "@/components/Title";
+import CategoryList from "@/components/CategoryList";
+import ControlButton from "@/components/ControlButton";
 
 type Position = {
   xRate: number;
   yRate: number;
 };
-export default function Productlabel() {
+export default function ProductCategory() {
   const [currentPosition, setCurrentPosition] = useState<Position>({
     xRate: 500,
     yRate: -200,
@@ -40,9 +41,10 @@ export default function Productlabel() {
         }}
         ref={nodeRef}
       >
-        <ProductLabelImageView />
-        <ProductTitle />
-        <ProductCategoryList />
+        <ImageView />
+        <Title />
+        <CategoryList />
+        <ControlButton text="save" />
       </Box>
     </Draggable>
   );

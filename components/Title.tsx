@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-export default function ProductTitle() {
+export default function Title() {
   return (
     <Box
       className="title"

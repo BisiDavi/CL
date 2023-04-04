@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 /* eslint-disable @next/next/no-img-element */
 
-export default function ProductLabelImageView() {
+export default function ImageView() {
   return (
     <Box
       className="image-view"
@@ -12,7 +12,7 @@ export default function ProductLabelImageView() {
         p: 2,
       }}
     >
-      <p>Upload Fluid Image</p>
+      <p>Upload Cover Image</p>
       <img src="" alt="" />
       <input type="file" />
     </Box>

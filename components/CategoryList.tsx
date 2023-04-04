@@ -3,7 +3,7 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 import ControlButton from "@/components/ControlButton";
 
-export default function ProductCategoryList() {
+export default function CategoryList() {
   return (
     <Box
       sx={{

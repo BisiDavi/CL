@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 
 import { useAppSelector } from "@/redux/store";
 import Layout from "@/components/Layout";
-import Productlabel from "@/components/Productlabel";
+import Productlabel from "@/components/ProductCategory";
 
 export default function SchematicsEditor() {
   const { vehicle } = useAppSelector((state) => state.vehicle);
