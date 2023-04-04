@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -86,7 +85,7 @@ export default function PermanentDrawerLeft() {
           >
             <Image
               src={product.image}
-              height={400}
+              height={300}
               width={400}
               alt={product.name}
             />
