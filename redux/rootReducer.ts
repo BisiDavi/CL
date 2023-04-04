@@ -1,9 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import ProductReducer from "@/redux/product-slice";
+import VehicleReducer from "@/redux/vehicle-slice";
 
 const RootReducer = combineReducers({
-  product: ProductReducer,
+  vehicle: VehicleReducer,
 });
 
 export type RootState = ReturnType<typeof RootReducer>;

@@ -15,10 +15,18 @@ import MailIcon from "@mui/icons-material/Mail";
 
 import productsJson from "@/json/products.json";
 import Image from "next/image";
+import { useAppDispatch } from "@/redux/store";
+import { selectVehicle } from "@/redux/vehicle-slice";
 
 const drawerWidth = 240;
 
 export default function PermanentDrawerLeft() {
+  const dispatch = useAppDispatch();
+
+  function selectVehicleHandler(vehicle: string) {
+    dispatch(selectVehicle(vehicle));
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -74,6 +82,7 @@ export default function PermanentDrawerLeft() {
         {productsJson.products.map((product) => (
           <Box
             key={product.name}
+            title={`Select ${product.name}`}
             component="div"
             sx={{
               margin: "0px 10px",
@@ -82,6 +91,7 @@ export default function PermanentDrawerLeft() {
               borderRadius: "5px",
             }}
             className="product"
+            onClick={() => selectVehicleHandler(product.name)}
           >
             <Image
               src={product.image}
