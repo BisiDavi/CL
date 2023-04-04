@@ -3,17 +3,16 @@ import { getApp, initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 // import { getAnalytics } from "firebase/analytics";
 
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBU23uz0qMnK075fSAy1Q4Oe_o1wrYOlik",
-  authDomain: "interview-c8b60.firebaseapp.com",
-  projectId: "interview-c8b60",
-  storageBucket: "interview-c8b60.appspot.com",
-  messagingSenderId: "7839226869",
-  appId: "1:7839226869:web:99acc513eae67f35ca1ebc",
-  measurementId: "G-VFPYG5XH5B",
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 };
 
 export function createFirebaseApp() {
@@ -35,6 +34,5 @@ export function initializeDB() {
   const db = getDatabase(app);
   return db;
 }
-
 
 // const analytics = getAnalytics(app);
