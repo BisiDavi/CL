@@ -1,6 +1,8 @@
-import { Button, TextField, TextareaAutosize } from "@mui/material";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Box from "@mui/material/Box";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 
 /* eslint-disable @next/next/no-img-element */
@@ -18,13 +20,14 @@ export default function Productlabel() {
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     setCurrentPosition({ xRate: data.lastX, yRate: data.lastY });
   };
-
+  const nodeRef = useRef(null);
   return (
     <Draggable
       position={{
         x: currentPosition.xRate,
         y: currentPosition.yRate,
       }}
+      nodeRef={nodeRef}
       onDrag={onDrag}
     >
       <Box
@@ -36,6 +39,7 @@ export default function Productlabel() {
           maxWidth: "250px",
           backgroundColor: "white",
         }}
+        ref={nodeRef}
       >
         <Box
           className="image-view"
