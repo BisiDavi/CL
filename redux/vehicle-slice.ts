@@ -72,9 +72,17 @@ const VehicleSlice = createSlice({
         };
       }
     },
-    
+    deleteProductCategory(state, action: PayloadAction<string>) {
+      if (state?.vehicle?.categories) {
+        const categoryIndex = state.vehicle.categories.findIndex(
+          (category) => category.id === action.payload
+        );
+        state.vehicle.categories.splice(categoryIndex, 1);
+      }
+    },
   },
 });
 
-export const { selectVehicle, addProductCategory } = VehicleSlice.actions;
+export const { selectVehicle, addProductCategory, deleteProductCategory } =
+  VehicleSlice.actions;
 export default VehicleSlice.reducer;

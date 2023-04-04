@@ -7,9 +7,17 @@ import Title from "@/components/Title";
 import CategoryList from "@/components/CategoryList";
 import ControlButton from "@/components/ControlButton";
 import type { Position } from "@/types";
+import { useAppDispatch } from "@/redux/store";
+import { deleteProductCategory } from "@/redux/vehicle-slice";
+import type { categoriesType } from "@/types/redux-type";
 
-export default function ProductCategory({ category }: any) {
+type ProductCategoryType = {
+  category: categoriesType;
+};
+
+export default function ProductCategory({ category }: ProductCategoryType) {
   console.log("category", category);
+  const dispatch = useAppDispatch();
   const [currentPosition, setCurrentPosition] = useState<Position>({
     xRate: category.x,
     yRate: category.y,
@@ -18,6 +26,11 @@ export default function ProductCategory({ category }: any) {
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     setCurrentPosition({ xRate: data.lastX, yRate: data.lastY });
   };
+
+  function deleteProductCategoryHandler() {
+    dispatch(deleteProductCategory(category.id));
+  }
+
   const nodeRef = useRef(null);
   return (
     <Draggable
@@ -53,6 +66,7 @@ export default function ProductCategory({ category }: any) {
             right: -10,
             backgroundColor: "white",
           }}
+          onClick={deleteProductCategoryHandler}
         />
         <ImageView />
         <Title />
