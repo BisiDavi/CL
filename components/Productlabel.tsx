@@ -36,7 +36,7 @@ export default function Productlabel() {
           p: 2,
           borderRadius: 2,
           m: 2,
-          maxWidth: "250px",
+          maxWidth: "280px",
           backgroundColor: "white",
         }}
         ref={nodeRef}
@@ -60,11 +60,34 @@ export default function Productlabel() {
             variant="outlined"
             type="text"
             name="title"
-            sx={{ height: 10, width: "90%" }}
+            sx={{ height: 10, width: "85%" }}
           />
-          <Box sx={{ width: "10%", border: "1px solid black" }}>
-            <Button>❌</Button>
-            <Button>✅</Button>
+          <Box sx={{ width: "10%", display: "flex", flexDirection: "column" }}>
+            <Button
+              sx={{
+                minWidth: "unset",
+                px: 1,
+                py: 0.5,
+                mb: 2,
+                mx: 1,
+                border: "1px solid black",
+              }}
+            >
+              ❌
+            </Button>
+            <Button
+              sx={{
+                minWidth: "unset",
+                px: 1,
+                py: 0.5,
+                mb: 2,
+                mx: 1,
+                my: 1,
+                border: "1px solid black",
+              }}
+            >
+              ✅
+            </Button>
           </Box>
         </Box>
         <Box sx={{ m: "10px 0px", display: "flex" }}>
