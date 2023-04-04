@@ -17,6 +17,7 @@ import productsJson from "@/json/products.json";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { selectVehicle } from "@/redux/vehicle-slice";
 import SelectVehicle from "@/components/SelectVehicle";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -101,6 +102,27 @@ export default function PermanentDrawerLeft() {
               vehicle={vehicle?.name}
             />
           ))}
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            mt: 5,
+            mr: 4,
+          }}
+          component="div"
+        >
+          {vehicle?.name && (
+            <Button
+              variant="contained"
+              sx={{
+                maxWidth: 300,
+                m: 4,
+              }}
+            >
+              Proceed with {vehicle?.name} Schematics →
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>
