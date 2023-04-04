@@ -16,7 +16,11 @@ import { PropsWithChildren } from "react";
 
 const drawerWidth = 240;
 
-export default function Layout({ children }: PropsWithChildren) {
+interface Props {
+  title?: string;
+}
+
+export default function Layout({ children, title }: PropsWithChildren<Props>) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -28,6 +32,11 @@ export default function Layout({ children }: PropsWithChildren) {
           <Typography variant="h6" noWrap component="div">
             CL Demo
           </Typography>
+          {title && (
+            <Typography variant="h6" noWrap component="div">
+              {title}
+            </Typography>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer
