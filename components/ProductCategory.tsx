@@ -8,7 +8,7 @@ import CategoryList from "@/components/CategoryList";
 import ControlButton from "@/components/ControlButton";
 import type { Position } from "@/types";
 
-export default function ProductCategory() {
+export default function ProductCategory({ category }: any) {
   const [currentPosition, setCurrentPosition] = useState<Position>({
     xRate: 500,
     yRate: -200,

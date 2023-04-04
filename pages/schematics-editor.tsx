@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 
 import { useAppSelector } from "@/redux/store";
 import Layout from "@/components/Layout";
-import Productlabel from "@/components/ProductCategory";
+import ProductCategory from "@/components/ProductCategory";
 import LayoutDrawer from "@/components/LayoutDrawer";
 
 export default function SchematicsEditor() {
@@ -28,7 +28,7 @@ export default function SchematicsEditor() {
         {vehicle &&
           vehicle.categories &&
           vehicle?.categories.map((category, index) => (
-            <Productlabel key={index} />
+            <ProductCategory key={index} category={category} />
           ))}
       </Box>
       <style jsx>

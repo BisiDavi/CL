@@ -29,17 +29,19 @@ const VehicleSlice = createSlice({
     addProductCategory(state) {
       if (state.vehicle) {
         const categoryDimension =
-          state.vehicle.categories === undefined
+          state.vehicle?.categories === undefined
             ? { x: 500, y: -200 }
             : {
                 x:
                   50 +
-                  state.vehicle.categories[state.vehicle.categories.length - 1]
-                    .x,
+                  state.vehicle?.categories[
+                    state.vehicle?.categories.length - 1
+                  ].x,
                 y:
                   100 +
-                  state.vehicle.categories[state.vehicle.categories.length - 1]
-                    .y,
+                  state.vehicle?.categories[
+                    state.vehicle?.categories.length - 1
+                  ].y,
               };
         const vehicleCategories =
           state.vehicle.categories === undefined
