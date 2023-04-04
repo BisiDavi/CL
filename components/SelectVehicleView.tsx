@@ -2,11 +2,12 @@ import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-import productsJson from "@/json/products.json";
 import SelectVehicle from "@/components/SelectVehicle";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { selectVehicle } from "@/redux/vehicle-slice";
+import productsJson from "@/json/products.json";
 import type { selectVehicleHandlerType } from "@/types";
+import Link from "next/link";
 
 export default function SelectVehicleView() {
   const dispatch = useAppDispatch();
@@ -41,14 +42,22 @@ export default function SelectVehicleView() {
           justifyContent: "space-around",
         }}
       >
-        {productsJson.products.map((product) => (
-          <SelectVehicle
-            key={product.name}
-            product={product}
-            selectVehicleHandler={selectVehicleHandler}
-            vehicle={vehicle?.name}
-          />
-        ))}
+        {productsJson.products.map((product) => {
+          const { name, image } = product;
+          return (
+            <SelectVehicle
+              key={name}
+              product={product}
+              vehicle={vehicle?.name}
+              selectVehicleHandler={() =>
+                selectVehicleHandler({
+                  name,
+                  image,
+                })
+              }
+            />
+          );
+        })}
       </Box>
       <Box
         sx={{
@@ -60,15 +69,17 @@ export default function SelectVehicleView() {
         component="div"
       >
         {vehicle?.name && (
-          <Button
-            variant="contained"
-            sx={{
-              maxWidth: 300,
-              m: 4,
-            }}
-          >
-            Proceed with {vehicle?.name} Schematics →
-          </Button>
+          <Link href={`/schematics-editor?vehicle=${vehicle?.name}`}>
+            <Button
+              variant="contained"
+              sx={{
+                maxWidth: 300,
+                m: 4,
+              }}
+            >
+              Proceed with {vehicle?.name} Schematics →
+            </Button>
+          </Link>
         )}
       </Box>
     </Box>

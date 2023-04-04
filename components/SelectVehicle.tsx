@@ -1,11 +1,10 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import type { selectVehicleHandlerType } from "@/types";
 
 interface Props {
   product: { name: string; image: string };
-  selectVehicleHandler: ({ name, image }: selectVehicleHandlerType) => void;
+  selectVehicleHandler: () => void;
   vehicle: string | undefined;
 }
 
@@ -17,21 +16,21 @@ export default function SelectVehicle({
   const { name, image } = product;
   return (
     <Box
-      key={product.name}
-      title={`Select ${product.name}`}
+      key={name}
+      title={`Select ${name}`}
       component="div"
       sx={{
         margin: "0px 10px",
-        border: vehicle === product.name ? "2px solid red" : "1px solid black",
+        border: vehicle === name ? "2px solid red" : "1px solid black",
         padding: "20px",
         borderRadius: "5px",
       }}
       className="product"
-      onClick={() => selectVehicleHandler({ name, image })}
+      onClick={selectVehicleHandler}
     >
-      <Image src={product.image} height={300} width={400} alt={product.name} />
+      <Image src={image} height={300} width={400} alt={name} />
       <Typography sx={{ textAlign: "center", fontWeight: 700, fontSize: 24 }}>
-        {product.name}
+        {name}
       </Typography>
     </Box>
   );
