@@ -100,7 +100,24 @@ const VehicleSlice = createSlice({
       }
     },
     updateCategoryList(state, action) {
-      
+      if (
+        state.vehicle &&
+        state.vehicle?.categories &&
+        state.vehicle?.categories.length > 0
+      ) {
+        const { id, categoryList } = action.payload;
+        const categoryIdx = state.vehicle.categories.findIndex(
+          (category) => category.id === id
+        );
+        state.vehicle.categories[categoryIdx].categoryList =
+          state.vehicle.categories[categoryIdx]?.categoryList ||
+          state.vehicle.categories[categoryIdx]?.categoryList.length > 0
+            ? [
+                ...state.vehicle.categories[categoryIdx].categoryList,
+                categoryList,
+              ]
+            : [categoryList];
+      }
     },
   },
 });
@@ -110,5 +127,6 @@ export const {
   addProductCategory,
   deleteProductCategory,
   updateCategoryTitle,
+  updateCategoryList,
 } = VehicleSlice.actions;
 export default VehicleSlice.reducer;

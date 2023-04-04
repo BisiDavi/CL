@@ -4,7 +4,11 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import ControlButton from "@/components/ControlButton";
 import { useAppDispatch } from "@/redux/store";
 
-export default function CategoryList() {
+interface Props {
+  id: string;
+}
+
+export default function CategoryList({ id }: Props) {
   const dispatch = useAppDispatch();
 
   return (
