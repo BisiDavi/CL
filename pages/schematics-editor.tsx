@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import Box from "@mui/material/Box";
-import Image from "next/image";
 
 import Layout from "@/components/Layout";
 import { useAppSelector } from "@/redux/store";
@@ -12,9 +11,10 @@ export default function SchematicsEditor() {
       <Box
         sx={{
           width: "100%",
-          margin: "80px auto",
+          margin: "60px auto",
           display: "flex",
           justifyContent: "center",
+          height: "100vh",
         }}
       >
         {vehicle?.image && (
@@ -24,8 +24,9 @@ export default function SchematicsEditor() {
       <style jsx>
         {`
           img.vehicle {
-            width: 80%;
-            height: 600px;
+            width: 50%;
+            height: 400px;
+            margin: auto;
           }
         `}
       </style>
