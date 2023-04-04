@@ -9,9 +9,10 @@ import ControlButton from "@/components/ControlButton";
 import type { Position } from "@/types";
 
 export default function ProductCategory({ category }: any) {
+  console.log("category", category);
   const [currentPosition, setCurrentPosition] = useState<Position>({
-    xRate: 500,
-    yRate: -200,
+    xRate: category.x,
+    yRate: category.y,
   });
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {

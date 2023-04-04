@@ -9,6 +9,8 @@ import LayoutDrawer from "@/components/LayoutDrawer";
 export default function SchematicsEditor() {
   const { vehicle } = useAppSelector((state) => state.vehicle);
 
+  console.log("vehicle", vehicle);
+
   return (
     <Layout title="Schematics Editor" drawer={<LayoutDrawer />}>
       <Box
