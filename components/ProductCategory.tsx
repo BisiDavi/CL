@@ -6,11 +6,8 @@ import ImageView from "@/components/ImageView";
 import Title from "@/components/Title";
 import CategoryList from "@/components/CategoryList";
 import ControlButton from "@/components/ControlButton";
+import type { Position } from "@/types";
 
-type Position = {
-  xRate: number;
-  yRate: number;
-};
 export default function ProductCategory() {
   const [currentPosition, setCurrentPosition] = useState<Position>({
     xRate: 500,
@@ -38,6 +35,7 @@ export default function ProductCategory() {
           m: 2,
           maxWidth: "280px",
           backgroundColor: "white",
+          position: "absolute",
         }}
         ref={nodeRef}
       >

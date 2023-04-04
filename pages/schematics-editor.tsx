@@ -18,6 +18,7 @@ export default function SchematicsEditor() {
           flexDirection: "column",
           justifyContent: "center",
           height: "100vh",
+          position: "relative",
         }}
       >
         {vehicle?.image && (
