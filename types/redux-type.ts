@@ -6,6 +6,7 @@ type labelType = {
 
 export type vehicleType = {
   name: string;
+  image: string;
   labels?: labelType[];
 } | null;
 

@@ -1,8 +1,8 @@
+import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 import productsJson from "@/json/products.json";
-import { Button } from "@mui/material";
-import Typography from "@mui/material/Typography";
 import SelectVehicle from "@/components/SelectVehicle";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { selectVehicle } from "@/redux/vehicle-slice";

@@ -6,14 +6,17 @@ const initialState: stateType = {
 };
 
 const VehicleSlice = createSlice({
-  name: "Product",
+  name: "Vehicle",
   initialState,
   reducers: {
-    selectVehicle(state, action: PayloadAction<string>) {
+    selectVehicle(
+      state,
+      action: PayloadAction<{ name: string; image: string }>
+    ) {
       state.vehicle =
         state.vehicle === null
-          ? { name: action.payload }
-          : { ...state.vehicle, name: action.payload };
+          ? { name: action.payload.name, image: action.payload.image }
+          : { ...state.vehicle, name: action.payload.name };
     },
   },
 });
