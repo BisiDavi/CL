@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 import { stateType } from "@/types/redux-type";
 
 const initialState: stateType = {
@@ -15,7 +16,10 @@ const VehicleSlice = createSlice({
     ) {
       state.vehicle =
         state.vehicle === null
-          ? { name: action.payload.name, image: action.payload.image }
+          ? {
+              name: action.payload.name,
+              image: action.payload.image,
+            }
           : {
               ...state.vehicle,
               name: action.payload.name,
@@ -26,10 +30,14 @@ const VehicleSlice = createSlice({
       if (state.vehicle) {
         const vehicleCategories =
           state.vehicle.categories === undefined
-            ? [{ title: "", image: "", vehicleSpecification: [] }]
+            ? [{
+              id: uuidv4(),
+               title: "", image: "", vehicleSpecification: [] }]
             : [
                 ...state.vehicle.categories,
-                { title: "", image: "", vehicleSpecification: [] },
+                {
+              id: uuidv4(),
+              title: "", image: "", vehicleSpecification: [] },
               ];
         state.vehicle = {
           ...state.vehicle,
