@@ -14,9 +14,9 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
 import productsJson from "@/json/products.json";
-import Image from "next/image";
 import { useAppDispatch } from "@/redux/store";
 import { selectVehicle } from "@/redux/vehicle-slice";
+import SelectVehicle from "@/components/SelectVehicle";
 
 const drawerWidth = 240;
 
@@ -93,31 +93,11 @@ export default function PermanentDrawerLeft() {
           }}
         >
           {productsJson.products.map((product) => (
-            <Box
+            <SelectVehicle
               key={product.name}
-              title={`Select ${product.name}`}
-              component="div"
-              sx={{
-                margin: "0px 10px",
-                border: "1px solid black",
-                padding: "20px",
-                borderRadius: "5px",
-              }}
-              className="product"
-              onClick={() => selectVehicleHandler(product.name)}
-            >
-              <Image
-                src={product.image}
-                height={300}
-                width={400}
-                alt={product.name}
-              />
-              <Typography
-                sx={{ textAlign: "center", fontWeight: 700, fontSize: 24 }}
-              >
-                {product.name}
-              </Typography>
-            </Box>
+              product={product}
+              selectVehicleHandler={selectVehicleHandler}
+            />
           ))}
         </Box>
       </Box>
