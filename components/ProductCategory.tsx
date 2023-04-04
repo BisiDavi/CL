@@ -56,7 +56,7 @@ export default function ProductCategory() {
         <ImageView />
         <Title />
         <CategoryList />
-        <ControlButton text="save" />
+        <ControlButton text="save" style={{ color: "green" }} />
       </Box>
     </Draggable>
   );
