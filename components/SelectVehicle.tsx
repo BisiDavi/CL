@@ -5,11 +5,13 @@ import Image from "next/image";
 interface Props {
   product: { name: string; image: string };
   selectVehicleHandler: (vehicle: string) => void;
+  vehicle: string | null;
 }
 
 export default function SelectVehicle({
   product,
   selectVehicleHandler,
+  vehicle,
 }: Props) {
   return (
     <Box

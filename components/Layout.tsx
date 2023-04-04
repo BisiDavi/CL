@@ -14,7 +14,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
 import productsJson from "@/json/products.json";
-import { useAppDispatch } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { selectVehicle } from "@/redux/vehicle-slice";
 import SelectVehicle from "@/components/SelectVehicle";
 
@@ -22,6 +22,7 @@ const drawerWidth = 240;
 
 export default function PermanentDrawerLeft() {
   const dispatch = useAppDispatch();
+  const { vehicle } = useAppSelector((state) => state.vehicle);
 
   function selectVehicleHandler(vehicle: string) {
     dispatch(selectVehicle(vehicle));
@@ -97,6 +98,7 @@ export default function PermanentDrawerLeft() {
               key={product.name}
               product={product}
               selectVehicleHandler={selectVehicleHandler}
+              vehicle={vehicle}
             />
           ))}
         </Box>
