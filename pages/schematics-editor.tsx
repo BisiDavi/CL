@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Box from "@mui/material/Box";
-import { useState } from "react";
-import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
+import Draggable from "react-draggable";
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 
 import { useAppSelector } from "@/redux/store";
@@ -32,13 +31,6 @@ const DraggableBox = ({ id }: any) => {
 
 export default function SchematicsEditor() {
   const { vehicle } = useAppSelector((state) => state.vehicle);
-  const [currentPosition, setCurrentPosition] = useState<Position>({
-    xRate: 150,
-    yRate: 150,
-  });
-  const onDrag = (e: DraggableEvent, data: DraggableData) => {
-    setCurrentPosition({ xRate: data.lastX, yRate: data.lastY });
-  };
 
   return (
     <Layout title="Schematics Editor">
@@ -55,17 +47,7 @@ export default function SchematicsEditor() {
         {vehicle?.image && (
           <img className="vehicle" src={vehicle?.image} alt={vehicle?.name} />
         )}
-        <Draggable
-          position={{
-            x: currentPosition.xRate,
-            y: currentPosition.yRate,
-          }}
-          defaultClassName=""
-          onDrag={onDrag}
-        >
-          <Productlabel />
-        </Draggable>
-
+        <Productlabel />
         <Box
           sx={{
             display: "flex",
