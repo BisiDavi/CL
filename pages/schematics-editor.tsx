@@ -25,7 +25,11 @@ export default function SchematicsEditor() {
         {vehicle?.image && (
           <img className="vehicle" src={vehicle?.image} alt={vehicle?.name} />
         )}
-        <Productlabel />
+        {vehicle &&
+          vehicle.categories &&
+          vehicle?.categories.map((category, index) => (
+            <Productlabel key={index} />
+          ))}
       </Box>
       <style jsx>
         {`
