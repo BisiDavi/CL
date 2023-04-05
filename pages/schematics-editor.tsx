@@ -7,10 +7,18 @@ import Layout from "@/components/Layout";
 import ProductCategory from "@/components/ProductCategory";
 import LayoutDrawer from "@/components/LayoutDrawer";
 import Point from "@/components/Point";
+import { useState } from "react";
 
 export default function SchematicsEditor() {
   const { vehicle } = useAppSelector((state) => state.vehicle);
   const { point } = useAppSelector((state) => state.point);
+  const [arrows, setArrows] = useState<any>([]);
+
+  console.log("arrows", arrows);
+
+  const addArrow = ({ start, end }: any) => {
+    setArrows([...arrows, { start, end }]);
+  };
 
   return (
     <Layout title="Schematics Editor" drawer={<LayoutDrawer />}>
@@ -28,16 +36,32 @@ export default function SchematicsEditor() {
         {vehicle?.image && (
           <img className="vehicle" src={vehicle?.image} alt={vehicle?.name} />
         )}
-        <Xwrapper>
-          {vehicle &&
-            vehicle.categories &&
-            vehicle?.categories.map((category, index) => (
-              <ProductCategory key={index} category={category} />
-            ))}
-          <Xarrow start={"elem1"} end="elem2" />
-        </Xwrapper>
+        {vehicle &&
+          vehicle.categories &&
+          vehicle?.categories.map((category, index) => (
+            <ProductCategory
+              key={index}
+              category={category}
+              {...{
+                addArrow,
+                handler: "bottom",
+                setArrows,
+              }}
+            />
+          ))}
         {point.map((item) => (
-          <Point key={item.id} point={item} />
+          <Point
+            key={item.id}
+            point={item}
+            {...{ addArrow, setArrows, handler: "top" }}
+          />
+        ))}
+        {arrows.map((ar: any) => (
+          <Xarrow
+            start={ar.start}
+            end={ar.end}
+            key={ar.start + "-." + ar.start}
+          />
         ))}
       </Box>
       <style jsx>

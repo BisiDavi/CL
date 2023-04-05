@@ -6,12 +6,16 @@ import type { DraggableData, DraggableEvent } from "react-draggable";
 import { useAppDispatch } from "@/redux/store";
 import { deletePoint, updatePointPosition } from "@/redux/point-slice";
 import type { pointType } from "@/types/redux-type";
+import ConnectPointsWrapper from "./ConnectPointsWrapper";
 
 interface Props {
   point: pointType["point"][0];
+  addArrow: any;
+  handler: string;
+  setArrows: any;
 }
 
-export default function Point({ point }: Props) {
+export default function Point({ point, addArrow, handler, setArrows }: Props) {
   const dispatch = useAppDispatch();
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
@@ -22,8 +26,10 @@ export default function Point({ point }: Props) {
         y: data.lastY,
       })
     );
+    setArrows((arrows: any) => [...arrows]);
   };
-  const nodeRef = useRef(null);
+  const dragRef: any = useRef();
+  const boxRef = useRef();
 
   function deletePointHandler(event: any) {
     if (event.detail === 2) {
@@ -37,13 +43,13 @@ export default function Point({ point }: Props) {
         x: point.x,
         y: point.y,
       }}
-      nodeRef={nodeRef}
+      ref={dragRef}
       onDrag={onDrag}
     >
       <Box
-        ref={nodeRef}
+        id={point.id}
+        ref={boxRef}
         component="div"
-        key={point.id}
         sx={{
           height: "30px",
           width: "30px",
@@ -57,8 +63,24 @@ export default function Point({ point }: Props) {
           cursor: "pointer",
         }}
         onClick={deletePointHandler}
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          if (e.dataTransfer.getData("arrow") === point.id) {
+            console.log(e.dataTransfer.getData("arrow"), point.id);
+          } else {
+            const refs = {
+              start: e.dataTransfer.getData("arrow"),
+              end: point.id,
+            };
+            addArrow(refs);
+            console.log("droped!", refs);
+          }
+        }}
       >
         {point.count}
+        <ConnectPointsWrapper
+          {...{ boxId: point.id, handler, dragRef, boxRef }}
+        />
       </Box>
     </Draggable>
   );

@@ -10,9 +10,11 @@ import type { categoriesType } from "@/types/redux-type";
 
 type ProductCategoryType = {
   category: categoriesType;
+  connector: JSX.Element;
 };
 export default function EditableProductCategoryView({
   category,
+  connector,
 }: ProductCategoryType) {
   const dispatch = useAppDispatch();
 
@@ -74,6 +76,7 @@ export default function EditableProductCategoryView({
         style={{ color: "green" }}
         onClick={saveButtonHandler}
       />
+      {connector}
     </Box>
   );
 }
