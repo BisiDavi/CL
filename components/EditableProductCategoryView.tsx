@@ -55,7 +55,7 @@ export default function EditableProductCategoryView({
         }}
         onClick={deleteProductCategoryHandler}
       />
-      <ImageView />
+      {/* <ImageView /> */}
       <Title id={category.id} title={category.title} />
       {category &&
       category?.categoryList &&

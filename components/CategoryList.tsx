@@ -42,7 +42,6 @@ export default function CategoryList({ id, list }: Props) {
         <TextareaAutosize
           aria-label="description"
           placeholder="Product Category List"
-          name="description"
           style={{ width: "90%", padding: "10px" }}
           onChange={(e) => setCategoryList(e.target.value)}
         />
