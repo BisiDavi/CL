@@ -18,9 +18,11 @@ export default function Point({ point }: Props) {
   const { vehicle } = useAppSelector((state) => state.vehicle);
 
   const selectedPoint = arrows.filter((arrow) => arrow?.end === point?.id);
-  const selectedCategory = vehicle?.categories?.filter(
-    (category) => category.id === selectedPoint[0]?.start
-  );
+  const selectedCategory =
+    selectedPoint.length > 0 &&
+    vehicle?.categories?.filter(
+      (category) => category.id === selectedPoint[0]?.start
+    );
 
   const pointStyle =
     selectedCategory && selectedCategory[0].submit
