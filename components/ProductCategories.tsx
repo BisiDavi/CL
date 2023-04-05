@@ -13,7 +13,7 @@ export default function ProductCategories() {
       {vehicle &&
         vehicle.categories &&
         vehicle?.categories.map((category, index) => (
-          <ProductCategory key={index} category={category} handler="bottom" />
+          <ProductCategory key={index} category={category} />
         ))}
       <style jsx>
         {`

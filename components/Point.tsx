@@ -10,10 +10,9 @@ import { updateArrows } from "@/redux/arrow-slice";
 
 interface Props {
   point: pointType["point"][0];
-  handler: string;
 }
 
-export default function Point({ point, handler }: Props) {
+export default function Point({ point }: Props) {
   const dispatch = useAppDispatch();
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {

@@ -2,27 +2,20 @@ import Box from "@mui/material/Box";
 import { useRef } from "react";
 import Draggable from "react-draggable";
 import type { DraggableData, DraggableEvent } from "react-draggable";
-import { useXarrow } from "react-xarrows";
 
-import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { useAppDispatch } from "@/redux/store";
 import { updateCategoryItemPosition } from "@/redux/vehicle-slice";
-import type { categoriesType } from "@/types/redux-type";
-import ProductCategoryView from "./ProductCategoryView";
-import EditableProductCategoryView from "./EditableProductCategoryView";
-import ConnectPointsWrapper from "./ConnectPointsWrapper";
+import ProductCategoryView from "@/components/ProductCategoryView";
+import EditableProductCategoryView from "@/components/EditableProductCategoryView";
+import ConnectPointsWrapper from "@/components/ConnectPointsWrapper";
 import { setArrows, updateArrows } from "@/redux/arrow-slice";
+import type { categoriesType } from "@/types/redux-type";
 
 type ProductCategoryType = {
   category: categoriesType;
-  handler: string;
-  // addArrow: any;
-  // setArrows: any;
 };
 
-export default function ProductCategory({
-  category,
-  handler,
-}: ProductCategoryType) {
+export default function ProductCategory({ category }: ProductCategoryType) {
   const dispatch = useAppDispatch();
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     dispatch(
@@ -71,7 +64,7 @@ export default function ProductCategory({
             category={category}
             connector={
               <ConnectPointsWrapper
-                {...{ boxId: category.id, handler, dragRef, boxRef }}
+                {...{ boxId: category.id, handler: "bottom", dragRef, boxRef }}
               />
             }
           />

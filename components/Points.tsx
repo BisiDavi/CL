@@ -7,7 +7,7 @@ export default function Points() {
   return (
     <>
       {point.map((item) => (
-        <Point key={item.id} point={item} handler="top" />
+        <Point key={item.id} point={item} />
       ))}
     </>
   );
