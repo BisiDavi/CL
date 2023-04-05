@@ -39,10 +39,11 @@ export default function Point({ point, handler }: Props) {
         x: point.x,
         y: point.y,
       }}
-      ref={dragRef}
+      nodeRef={dragRef}
       onDrag={onDrag}
     >
       <Box
+        ref={dragRef}
         id={point.id}
         component="div"
         sx={{

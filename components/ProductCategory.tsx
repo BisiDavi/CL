@@ -22,10 +22,8 @@ type ProductCategoryType = {
 export default function ProductCategory({
   category,
   handler,
-}: // setArrows,
-ProductCategoryType) {
+}: ProductCategoryType) {
   const dispatch = useAppDispatch();
-  // const { arrows } = useAppSelector((state) => state.arrows);
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     dispatch(
       updateCategoryItemPosition({
@@ -35,7 +33,6 @@ ProductCategoryType) {
       })
     );
     dispatch(setArrows());
-    // setArrows((arrows: any) => [...arrows]);
   };
 
   const dragRef: any = useRef();
@@ -64,7 +61,6 @@ ProductCategoryType) {
               end: category.id,
             };
             dispatch(updateArrows(refs));
-            // addArrow(refs);
           }
         }}
       >
