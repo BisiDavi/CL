@@ -3,11 +3,7 @@ import { useRef } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 
 import { useAppDispatch } from "@/redux/store";
-import {
-  deleteProductCategory,
-  toggleSubmit,
-  updateCategoryItemPosition,
-} from "@/redux/vehicle-slice";
+import { updateCategoryItemPosition } from "@/redux/vehicle-slice";
 import type { categoriesType } from "@/types/redux-type";
 import ProductCategoryView from "./ProductCategoryView";
 import EditableProductCategoryView from "./EditableProductCategoryView";
@@ -29,14 +25,6 @@ export default function ProductCategory({ category }: ProductCategoryType) {
     );
   };
 
-  function deleteProductCategoryHandler() {
-    dispatch(deleteProductCategory(category.id));
-  }
-
-  function saveButtonHandler() {
-    dispatch(toggleSubmit(category.id));
-  }
-
   const nodeRef = useRef(null);
   return (
     <Draggable
@@ -47,7 +35,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
       nodeRef={nodeRef}
       onDrag={onDrag}
     >
-      <Box ref={nodeRef}>
+      <Box ref={nodeRef} sx={{ position: "absolute" }}>
         {category.submit ? (
           <ProductCategoryView category={category} />
         ) : (

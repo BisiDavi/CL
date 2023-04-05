@@ -1,14 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
 
-import ImageView from "@/components/ImageView";
-import Title from "@/components/Title";
-import CategoryList from "@/components/CategoryList";
 import ControlButton from "@/components/ControlButton";
 import { useAppDispatch } from "@/redux/store";
 import { toggleSubmit } from "@/redux/vehicle-slice";
 import type { categoriesType } from "@/types/redux-type";
-import { Typography } from "@mui/material";
 
 type ProductCategoryType = {
   category: categoriesType;
@@ -35,7 +32,7 @@ export default function ProductCategoryView({ category }: ProductCategoryType) {
       }}
     >
       <ControlButton
-        text="save"
+        text="Edit"
         style={{
           color: "Edit",
           borderRadius: "50%",
@@ -51,7 +48,9 @@ export default function ProductCategoryView({ category }: ProductCategoryType) {
         onClick={saveButtonHandler}
       />
       {category.image && <img src={category.image} alt={category.title} />}
-      <Typography>{category.title}</Typography>
+      <Typography variant="h5" sx={{ fontWeight: 700 }}>
+        {category.title}
+      </Typography>
       {category &&
         category?.categoryList &&
         category?.categoryList.length > 0 && (
