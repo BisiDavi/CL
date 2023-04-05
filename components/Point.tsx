@@ -30,7 +30,7 @@ export default function Point({ point }: Props) {
       : { height: "30px", width: "30px" };
 
   const textStyle =
-    selectedCategory && selectedCategory[0].submit ? "none" : "block";
+    selectedCategory && selectedCategory[0]?.submit ? "none" : "block";
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     dispatch(
