@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
 import { useRef } from "react";
-import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
+import Draggable from "react-draggable";
+import type { DraggableData, DraggableEvent } from "react-draggable";
+import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 
 import { useAppDispatch } from "@/redux/store";
 import { updateCategoryItemPosition } from "@/redux/vehicle-slice";
@@ -14,6 +16,7 @@ type ProductCategoryType = {
 
 export default function ProductCategory({ category }: ProductCategoryType) {
   const dispatch = useAppDispatch();
+  const updateXarrow = useXarrow();
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     dispatch(
@@ -23,6 +26,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
         y: data.lastY,
       })
     );
+    updateXarrow();
   };
 
   const nodeRef = useRef(null);
@@ -34,6 +38,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
       }}
       nodeRef={nodeRef}
       onDrag={onDrag}
+      onStop={updateXarrow}
     >
       <Box ref={nodeRef} sx={{ position: "absolute", width: "300px" }}>
         {category.submit ? (

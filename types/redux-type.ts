@@ -17,3 +17,7 @@ export type vehicleType = {
 export type stateType = {
   vehicle: vehicleType;
 };
+
+export type pointType = {
+  point: Array<{ count: number; x: number; y: number; id: string }>;
+};

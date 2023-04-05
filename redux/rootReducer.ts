@@ -3,9 +3,11 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
 import VehicleReducer from "@/redux/vehicle-slice";
+import PointReducer from "@/redux/point-slice";
 
 const reducers = combineReducers({
   vehicle: VehicleReducer,
+  point: PointReducer,
 });
 
 const persistConfig = {

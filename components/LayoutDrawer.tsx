@@ -9,6 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 
 import { useAppDispatch } from "@/redux/store";
 import { addProductCategory } from "@/redux/vehicle-slice";
+import { addPoint } from "@/redux/point-slice";
 
 export default function LayoutDrawer() {
   const drawerWidth = 240;
@@ -16,6 +17,10 @@ export default function LayoutDrawer() {
 
   function addProductCategoryHandler() {
     dispatch(addProductCategory());
+  }
+
+  function addPointHandler() {
+    dispatch(addPoint());
   }
 
   return (
@@ -34,11 +39,14 @@ export default function LayoutDrawer() {
       <Toolbar />
       <Divider />
       <List>
-        {["Add a Product Category"].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton onClick={addProductCategoryHandler}>
+        {[
+          { text: "Add a Product Category", func: addProductCategoryHandler },
+          { text: "Add a Point", func: addPointHandler },
+        ].map((item) => (
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton onClick={item.func}>
               <AddIcon />
-              <ListItemText primary={text} />
+              <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
         ))}
