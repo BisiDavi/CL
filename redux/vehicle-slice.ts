@@ -119,6 +119,22 @@ const VehicleSlice = createSlice({
             : [categoryList];
       }
     },
+    deleteCategoryList(state, action) {
+      if (
+        state.vehicle &&
+        state.vehicle?.categories &&
+        state.vehicle?.categories.length > 0
+      ) {
+        const { id, list } = action.payload;
+        const categoryIdx = state.vehicle.categories.findIndex(
+          (category) => category.id === id
+        );
+        const listIdx = state.vehicle.categories[
+          categoryIdx
+        ].categoryList.findIndex((_list) => _list === list);
+        state.vehicle.categories[categoryIdx].categoryList.splice(listIdx, 1);
+      }
+    },
   },
 });
 
@@ -128,5 +144,6 @@ export const {
   deleteProductCategory,
   updateCategoryTitle,
   updateCategoryList,
+  deleteCategoryList,
 } = VehicleSlice.actions;
 export default VehicleSlice.reducer;

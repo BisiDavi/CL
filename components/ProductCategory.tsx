@@ -46,7 +46,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
           p: 2,
           borderRadius: 2,
           m: 2,
-          maxWidth: "280px",
+          maxWidth: "300px",
           backgroundColor: "white",
           position: "absolute",
           cursor: "pointer",
@@ -71,7 +71,18 @@ export default function ProductCategory({ category }: ProductCategoryType) {
         />
         <ImageView />
         <Title id={category.id} title={category.title} />
-        <CategoryList id={category.id} />
+        {category &&
+        category?.categoryList &&
+        category?.categoryList.length > 0 ? (
+          <>
+            {category?.categoryList.map((_category) => (
+              <CategoryList key={_category} id={category.id} list={_category} />
+            ))}
+            <CategoryList id={category.id} />
+          </>
+        ) : (
+          <CategoryList id={category.id} />
+        )}
         <ControlButton text="save" style={{ color: "green" }} />
       </Box>
     </Draggable>

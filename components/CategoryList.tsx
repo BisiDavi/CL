@@ -1,15 +1,30 @@
 import Box from "@mui/material/Box";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 import ControlButton from "@/components/ControlButton";
 import { useAppDispatch } from "@/redux/store";
+import { deleteCategoryList, updateCategoryList } from "@/redux/vehicle-slice";
 
 interface Props {
   id: string;
+  list?: string;
 }
 
-export default function CategoryList({ id }: Props) {
+export default function CategoryList({ id, list }: Props) {
   const dispatch = useAppDispatch();
+  const [categoryList, setCategoryList] = useState("");
+
+  function addCategoryList() {
+    if (categoryList) {
+      dispatch(updateCategoryList({ id, categoryList }));
+    }
+  }
+
+  function deleteCategoryListHandler() {
+    dispatch(deleteCategoryList({ id, list }));
+  }
 
   return (
     <Box
@@ -21,21 +36,32 @@ export default function CategoryList({ id }: Props) {
         gap: 1,
       }}
     >
-      <TextareaAutosize
-        aria-label="description"
-        placeholder="Product Category List"
-        name="description"
-        style={{ width: "90%", padding: "10px" }}
-      />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 1,
-        }}
-      >
-        <ControlButton text="+" />
-      </Box>
+      {list ? (
+        <Typography sx={{ fontSize: "12px" }}>{list}</Typography>
+      ) : (
+        <TextareaAutosize
+          aria-label="description"
+          placeholder="Product Category List"
+          name="description"
+          style={{ width: "90%", padding: "10px" }}
+          value={categoryList}
+          onChange={(e) => setCategoryList(e.target.value)}
+        />
+      )}
+
+      {list ? (
+        <ControlButton
+          text="－"
+          style={{ color: "red" }}
+          onClick={deleteCategoryListHandler}
+        />
+      ) : (
+        <ControlButton
+          text="+"
+          style={{ color: "green" }}
+          onClick={addCategoryList}
+        />
+      )}
     </Box>
   );
 }
