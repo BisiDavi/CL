@@ -21,7 +21,9 @@ export default function EditableProductCategoryView({
   }
 
   function saveButtonHandler() {
-    dispatch(toggleSubmit(category.id));
+    if (category.title) {
+      dispatch(toggleSubmit(category.id));
+    }
   }
 
   return (

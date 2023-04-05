@@ -44,7 +44,6 @@ export default function CategoryList({ id, list }: Props) {
           placeholder="Product Category List"
           name="description"
           style={{ width: "90%", padding: "10px" }}
-          value={categoryList}
           onChange={(e) => setCategoryList(e.target.value)}
         />
       )}

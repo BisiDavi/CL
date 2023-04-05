@@ -32,9 +32,9 @@ export default function ProductCategoryView({ category }: ProductCategoryType) {
       }}
     >
       <ControlButton
-        text="Edit"
+        text="✎"
         style={{
-          color: "Edit",
+          color: "blue",
           borderRadius: "50%",
           height: "20px",
           width: "20px",
