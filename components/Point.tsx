@@ -7,15 +7,16 @@ import { useAppDispatch } from "@/redux/store";
 import { deletePoint, updatePointPosition } from "@/redux/point-slice";
 import type { pointType } from "@/types/redux-type";
 import ConnectPointsWrapper from "./ConnectPointsWrapper";
+import { updateArrows } from "@/redux/arrow-slice";
 
 interface Props {
   point: pointType["point"][0];
-  addArrow: any;
+  //   addArrow: any;
   handler: string;
-  setArrows: any;
+  //   setArrows: any;
 }
 
-export default function Point({ point, addArrow, handler, setArrows }: Props) {
+export default function Point({ point, handler }: Props) {
   const dispatch = useAppDispatch();
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
@@ -26,7 +27,7 @@ export default function Point({ point, addArrow, handler, setArrows }: Props) {
         y: data.lastY,
       })
     );
-    setArrows((arrows: any) => [...arrows]);
+    // setArrows((arrows: any) => [...arrows]);
   };
   const dragRef: any = useRef();
   const boxRef = useRef();
@@ -72,8 +73,7 @@ export default function Point({ point, addArrow, handler, setArrows }: Props) {
               start: e.dataTransfer.getData("arrow"),
               end: point.id,
             };
-            addArrow(refs);
-            console.log("droped!", refs);
+            dispatch(updateArrows(refs));
           }
         }}
       >

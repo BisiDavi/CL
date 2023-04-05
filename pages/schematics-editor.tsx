@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import { useState } from "react";
 
 import Layout from "@/components/Layout";
 import LayoutDrawer from "@/components/LayoutDrawer";
@@ -8,14 +7,6 @@ import Arrows from "@/components/Arrows";
 import ProductCategories from "@/components/ProductCategories";
 
 export default function SchematicsEditor() {
-  const [arrows, setArrows] = useState<any>([]);
-
-  console.log("arrows", arrows);
-
-  const addArrow = ({ start, end }: any) => {
-    setArrows([...arrows, { start, end }]);
-  };
-
   return (
     <Layout title="Schematics Editor" drawer={<LayoutDrawer />}>
       <Box
@@ -29,9 +20,9 @@ export default function SchematicsEditor() {
           position: "relative",
         }}
       >
-        <ProductCategories addArrow={addArrow} setArrows={setArrows} />
-        <Points addArrow={addArrow} setArrows={setArrows} />
-        <Arrows arrows={arrows} />
+        <ProductCategories />
+        <Points />
+        <Arrows />
       </Box>
     </Layout>
   );

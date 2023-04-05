@@ -4,10 +4,12 @@ import { persistReducer } from "redux-persist";
 
 import VehicleReducer from "@/redux/vehicle-slice";
 import PointReducer from "@/redux/point-slice";
+import ArrowReducer from "@/redux/arrow-slice";
 
 const reducers = combineReducers({
   vehicle: VehicleReducer,
   point: PointReducer,
+  arrows: ArrowReducer,
 });
 
 const persistConfig = {

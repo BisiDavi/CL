@@ -2,7 +2,7 @@
 import { useAppSelector } from "@/redux/store";
 import ProductCategory from "@/components/ProductCategory";
 
-export default function ProductCategories({ addArrow, setArrows }: any) {
+export default function ProductCategories() {
   const { vehicle } = useAppSelector((state) => state.vehicle);
 
   return (
@@ -13,15 +13,7 @@ export default function ProductCategories({ addArrow, setArrows }: any) {
       {vehicle &&
         vehicle.categories &&
         vehicle?.categories.map((category, index) => (
-          <ProductCategory
-            key={index}
-            category={category}
-            {...{
-              addArrow,
-              handler: "bottom",
-              setArrows,
-            }}
-          />
+          <ProductCategory key={index} category={category} handler="bottom" />
         ))}
       <style jsx>
         {`

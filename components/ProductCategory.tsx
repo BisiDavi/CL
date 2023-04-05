@@ -4,28 +4,28 @@ import Draggable from "react-draggable";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 import { useXarrow } from "react-xarrows";
 
-import { useAppDispatch } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { updateCategoryItemPosition } from "@/redux/vehicle-slice";
 import type { categoriesType } from "@/types/redux-type";
 import ProductCategoryView from "./ProductCategoryView";
 import EditableProductCategoryView from "./EditableProductCategoryView";
 import ConnectPointsWrapper from "./ConnectPointsWrapper";
+import { updateArrows } from "@/redux/arrow-slice";
 
 type ProductCategoryType = {
   category: categoriesType;
   handler: string;
-  addArrow: any;
-  setArrows: any;
+  // addArrow: any;
+  // setArrows: any;
 };
 
 export default function ProductCategory({
   category,
   handler,
-  addArrow,
-  setArrows,
-}: ProductCategoryType) {
+}: // setArrows,
+ProductCategoryType) {
   const dispatch = useAppDispatch();
-
+  // const { arrows } = useAppSelector((state) => state.arrows);
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     dispatch(
       updateCategoryItemPosition({
@@ -34,7 +34,8 @@ export default function ProductCategory({
         y: data.lastY,
       })
     );
-    setArrows((arrows: any) => [...arrows]);
+    // dispatch(updateArrows(arrows));
+    // setArrows((arrows: any) => [...arrows]);
   };
 
   const dragRef: any = useRef();
@@ -62,8 +63,8 @@ export default function ProductCategory({
               start: e.dataTransfer.getData("arrow"),
               end: category.id,
             };
-            addArrow(refs);
-            console.log("droped!", refs);
+            dispatch(updateArrows(refs));
+            // addArrow(refs);
           }
         }}
       >

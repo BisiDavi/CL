@@ -1,6 +1,8 @@
+import { useAppSelector } from "@/redux/store";
 import Xarrow from "react-xarrows";
 
-export default function Arrows({ arrows }: any) {
+export default function Arrows() {
+  const { arrows } = useAppSelector((state) => state.arrows);
   return (
     <>
       {arrows.map((ar: any) => (
@@ -9,9 +11,9 @@ export default function Arrows({ arrows }: any) {
           end={ar.end}
           key={ar.start + "-." + ar.start}
           color="black"
-          headSize={2}
           strokeWidth={2}
           path="straight"
+          showTail={true}
         />
       ))}
     </>
