@@ -10,7 +10,7 @@ import type { categoriesType } from "@/types/redux-type";
 import ProductCategoryView from "./ProductCategoryView";
 import EditableProductCategoryView from "./EditableProductCategoryView";
 import ConnectPointsWrapper from "./ConnectPointsWrapper";
-import { updateArrows } from "@/redux/arrow-slice";
+import { setArrows, updateArrows } from "@/redux/arrow-slice";
 
 type ProductCategoryType = {
   category: categoriesType;
@@ -34,7 +34,7 @@ ProductCategoryType) {
         y: data.lastY,
       })
     );
-    // dispatch(updateArrows(arrows));
+    dispatch(setArrows());
     // setArrows((arrows: any) => [...arrows]);
   };
 

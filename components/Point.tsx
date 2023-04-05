@@ -6,14 +6,11 @@ import type { DraggableData, DraggableEvent } from "react-draggable";
 import { useAppDispatch } from "@/redux/store";
 import { deletePoint, updatePointPosition } from "@/redux/point-slice";
 import type { pointType } from "@/types/redux-type";
-import ConnectPointsWrapper from "./ConnectPointsWrapper";
 import { updateArrows } from "@/redux/arrow-slice";
 
 interface Props {
   point: pointType["point"][0];
-  //   addArrow: any;
   handler: string;
-  //   setArrows: any;
 }
 
 export default function Point({ point, handler }: Props) {
@@ -27,10 +24,8 @@ export default function Point({ point, handler }: Props) {
         y: data.lastY,
       })
     );
-    // setArrows((arrows: any) => [...arrows]);
   };
   const dragRef: any = useRef();
-  const boxRef = useRef();
 
   function deletePointHandler(event: any) {
     if (event.detail === 2) {
@@ -49,7 +44,6 @@ export default function Point({ point, handler }: Props) {
     >
       <Box
         id={point.id}
-        ref={boxRef}
         component="div"
         sx={{
           height: "30px",
@@ -78,9 +72,6 @@ export default function Point({ point, handler }: Props) {
         }}
       >
         {point.count}
-        <ConnectPointsWrapper
-          {...{ boxId: point.id, handler, dragRef, boxRef }}
-        />
       </Box>
     </Draggable>
   );
