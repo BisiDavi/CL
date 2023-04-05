@@ -25,8 +25,10 @@ export default function Point({ point }: Props) {
   };
   const nodeRef = useRef(null);
 
-  function deletePointHandler() {
-    dispatch(deletePoint({ id: point.id }));
+  function deletePointHandler(event: any) {
+    if (event.detail === 2) {
+      dispatch(deletePoint({ id: point.id }));
+    }
   }
 
   return (
@@ -43,8 +45,8 @@ export default function Point({ point }: Props) {
         component="div"
         key={point.id}
         sx={{
-          height: "40px",
-          width: "40px",
+          height: "30px",
+          width: "30px",
           borderRadius: "50%",
           background: "white",
           border: "1px solid black",
