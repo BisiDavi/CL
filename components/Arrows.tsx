@@ -1,4 +1,4 @@
-import Xarrow from "react-xarrows/lib/Xarrow/Xarrow";
+import Xarrow from "react-xarrows";
 
 export default function Arrows({ arrows }: any) {
   return (
