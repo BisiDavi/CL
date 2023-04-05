@@ -17,8 +17,14 @@ const ArrowSlice = createSlice({
     setArrows(state) {
       state.arrows = [...state.arrows];
     },
+    deleteArrow(state, action: PayloadAction<string>) {
+      const arrowIdx = state.arrows.findIndex(
+        (arrow) => arrow.start === action.payload
+      );
+      state.arrows.splice(arrowIdx, 1);
+    },
   },
 });
 
-export const { updateArrows, setArrows } = ArrowSlice.actions;
+export const { updateArrows, setArrows, deleteArrow } = ArrowSlice.actions;
 export default ArrowSlice.reducer;
