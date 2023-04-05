@@ -33,7 +33,7 @@ export default function EditableProductCategoryView({
         p: 2,
         borderRadius: 2,
         m: 2,
-        maxWidth: "300px",
+        width: "100%",
         backgroundColor: "white",
         position: "absolute",
         cursor: "pointer",
