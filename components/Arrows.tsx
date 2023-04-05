@@ -8,6 +8,10 @@ export default function Arrows({ arrows }: any) {
           start={ar.start}
           end={ar.end}
           key={ar.start + "-." + ar.start}
+          color="black"
+          headSize={2}
+          strokeWidth={2}
+          path="straight"
         />
       ))}
     </>
