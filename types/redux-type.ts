@@ -5,6 +5,7 @@ export type categoriesType = {
   y: number;
   id: string;
   categoryList: string[];
+  submit: boolean;
 };
 
 export type vehicleType = {

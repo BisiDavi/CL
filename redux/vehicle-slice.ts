@@ -54,6 +54,7 @@ const VehicleSlice = createSlice({
                   x: categoryDimension.x,
                   y: categoryDimension.y,
                   categoryList: [],
+                  submit: false,
                 },
               ]
             : [
@@ -65,6 +66,7 @@ const VehicleSlice = createSlice({
                   x: categoryDimension.x,
                   y: categoryDimension.y,
                   categoryList: [],
+                  submit: false,
                 },
               ];
         state.vehicle = {
@@ -135,6 +137,33 @@ const VehicleSlice = createSlice({
         state.vehicle.categories[categoryIdx].categoryList.splice(listIdx, 1);
       }
     },
+    updateCategoryItemPosition(state, action) {
+      if (
+        state.vehicle &&
+        state.vehicle.categories &&
+        state.vehicle.categories.length > 0
+      ) {
+        const { id, x, y } = action.payload;
+        const categoryIdx = state.vehicle.categories.findIndex(
+          (category) => category.id === id
+        );
+        state.vehicle.categories[categoryIdx].x = x;
+        state.vehicle.categories[categoryIdx].y = y;
+      }
+    },
+    toggleSubmit(state, action) {
+      if (
+        state.vehicle &&
+        state.vehicle.categories &&
+        state.vehicle.categories.length > 0
+      ) {
+        const categoryIdx = state.vehicle.categories.findIndex(
+          (category) => category.id === action.payload
+        );
+        state.vehicle.categories[categoryIdx].submit =
+          !state.vehicle.categories[categoryIdx].submit;
+      }
+    },
   },
 });
 
@@ -145,5 +174,7 @@ export const {
   updateCategoryTitle,
   updateCategoryList,
   deleteCategoryList,
+  updateCategoryItemPosition,
+  toggleSubmit,
 } = VehicleSlice.actions;
 export default VehicleSlice.reducer;

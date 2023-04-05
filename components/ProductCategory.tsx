@@ -1,15 +1,16 @@
 import Box from "@mui/material/Box";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 
-import ImageView from "@/components/ImageView";
-import Title from "@/components/Title";
-import CategoryList from "@/components/CategoryList";
-import ControlButton from "@/components/ControlButton";
 import { useAppDispatch } from "@/redux/store";
-import { deleteProductCategory } from "@/redux/vehicle-slice";
-import type { Position } from "@/types";
+import {
+  deleteProductCategory,
+  toggleSubmit,
+  updateCategoryItemPosition,
+} from "@/redux/vehicle-slice";
 import type { categoriesType } from "@/types/redux-type";
+import ProductCategoryView from "./ProductCategoryView";
+import EditableProductCategoryView from "./EditableProductCategoryView";
 
 type ProductCategoryType = {
   category: categoriesType;
@@ -17,73 +18,41 @@ type ProductCategoryType = {
 
 export default function ProductCategory({ category }: ProductCategoryType) {
   const dispatch = useAppDispatch();
-  const [currentPosition, setCurrentPosition] = useState<Position>({
-    xRate: category.x,
-    yRate: category.y,
-  });
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
-    setCurrentPosition({ xRate: data.lastX, yRate: data.lastY });
+    dispatch(
+      updateCategoryItemPosition({
+        id: category.id,
+        x: data.lastX,
+        y: data.lastY,
+      })
+    );
   };
 
   function deleteProductCategoryHandler() {
     dispatch(deleteProductCategory(category.id));
   }
 
+  function saveButtonHandler() {
+    dispatch(toggleSubmit(category.id));
+  }
+
   const nodeRef = useRef(null);
   return (
     <Draggable
       position={{
-        x: currentPosition.xRate,
-        y: currentPosition.yRate,
+        x: category.x,
+        y: category.y,
       }}
       nodeRef={nodeRef}
       onDrag={onDrag}
     >
-      <Box
-        sx={{
-          border: "1px solid black",
-          p: 2,
-          borderRadius: 2,
-          m: 2,
-          maxWidth: "300px",
-          backgroundColor: "white",
-          position: "absolute",
-          cursor: "pointer",
-          zIndex: 5,
-        }}
-        ref={nodeRef}
-      >
-        <ControlButton
-          text="❌"
-          style={{
-            borderRadius: "50%",
-            height: "20px",
-            width: "20px",
-            padding: "15px",
-            position: "absolute",
-            top: -10,
-            right: -10,
-            backgroundColor: "white",
-            zIndex: 10,
-          }}
-          onClick={deleteProductCategoryHandler}
-        />
-        <ImageView />
-        <Title id={category.id} title={category.title} />
-        {category &&
-        category?.categoryList &&
-        category?.categoryList.length > 0 ? (
-          <>
-            {category?.categoryList.map((_category) => (
-              <CategoryList key={_category} id={category.id} list={_category} />
-            ))}
-            <CategoryList id={category.id} />
-          </>
+      <Box ref={nodeRef}>
+        {category.submit ? (
+          <ProductCategoryView category={category} />
         ) : (
-          <CategoryList id={category.id} />
+          <EditableProductCategoryView category={category} />
         )}
-        <ControlButton text="save" style={{ color: "green" }} />
       </Box>
     </Draggable>
   );
