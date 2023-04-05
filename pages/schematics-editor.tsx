@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Box from "@mui/material/Box";
-import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
+import Xarrow, { Xwrapper } from "react-xarrows";
 
 import { useAppSelector } from "@/redux/store";
 import Layout from "@/components/Layout";
@@ -8,6 +8,8 @@ import ProductCategory from "@/components/ProductCategory";
 import LayoutDrawer from "@/components/LayoutDrawer";
 import Point from "@/components/Point";
 import { useState } from "react";
+import Points from "@/components/Points";
+import Arrows from "@/components/Arrows";
 
 export default function SchematicsEditor() {
   const { vehicle } = useAppSelector((state) => state.vehicle);
@@ -49,20 +51,8 @@ export default function SchematicsEditor() {
               }}
             />
           ))}
-        {point.map((item) => (
-          <Point
-            key={item.id}
-            point={item}
-            {...{ addArrow, setArrows, handler: "top" }}
-          />
-        ))}
-        {arrows.map((ar: any) => (
-          <Xarrow
-            start={ar.start}
-            end={ar.end}
-            key={ar.start + "-." + ar.start}
-          />
-        ))}
+        <Points addArrow={addArrow} setArrows={setArrows} />
+        <Arrows arrows={arrows} />
       </Box>
       <style jsx>
         {`
