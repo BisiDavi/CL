@@ -16,6 +16,7 @@ type ProductCategoryType = {
 };
 
 export default function ProductCategory({ category }: ProductCategoryType) {
+  console.log("category.id", category.id);
   const dispatch = useAppDispatch();
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     dispatch(

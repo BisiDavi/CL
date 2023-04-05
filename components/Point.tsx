@@ -3,7 +3,7 @@ import { useRef } from "react";
 import Draggable from "react-draggable";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 
-import { useAppDispatch } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { deletePoint, updatePointPosition } from "@/redux/point-slice";
 import type { pointType } from "@/types/redux-type";
 import { updateArrows } from "@/redux/arrow-slice";
@@ -14,6 +14,21 @@ interface Props {
 
 export default function Point({ point }: Props) {
   const dispatch = useAppDispatch();
+  const { arrows } = useAppSelector((state) => state.arrows);
+  const { vehicle } = useAppSelector((state) => state.vehicle);
+
+  const selectedPoint = arrows.filter((arrow) => arrow.end === point.id);
+  const selectedCategory = vehicle?.categories?.filter(
+    (category) => category.id === selectedPoint[0].start
+  );
+
+  const pointStyle =
+    selectedCategory && selectedCategory[0].submit
+      ? { height: "0px", width: "0px" }
+      : { height: "30px", width: "30px" };
+
+  const textStyle =
+    selectedCategory && selectedCategory[0].submit ? "none" : "block";
 
   const onDrag = (e: DraggableEvent, data: DraggableData) => {
     dispatch(
@@ -46,8 +61,8 @@ export default function Point({ point }: Props) {
         id={point.id}
         component="div"
         sx={{
-          height: "30px",
-          width: "30px",
+          height: pointStyle.height,
+          width: pointStyle.width,
           borderRadius: "50%",
           background: "white",
           border: "1px solid black",
@@ -71,7 +86,7 @@ export default function Point({ point }: Props) {
           }
         }}
       >
-        {point.count}
+        <span style={{ display: textStyle }}>{point.count}</span>
       </Box>
     </Draggable>
   );

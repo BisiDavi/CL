@@ -4,6 +4,8 @@ import { deleteArrow } from "@/redux/arrow-slice";
 
 export default function Arrows() {
   const { arrows } = useAppSelector((state) => state.arrows);
+
+  console.log("arrows", arrows);
   const dispatch = useAppDispatch();
 
   function deleteArrowHandler(e: any, start: string) {
