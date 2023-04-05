@@ -4,7 +4,7 @@ import Draggable from "react-draggable";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 
 import { useAppDispatch } from "@/redux/store";
-import { updatePointPosition } from "@/redux/point-slice";
+import { deletePoint, updatePointPosition } from "@/redux/point-slice";
 import type { pointType } from "@/types/redux-type";
 
 interface Props {
@@ -24,6 +24,10 @@ export default function Point({ point }: Props) {
     );
   };
   const nodeRef = useRef(null);
+
+  function deletePointHandler() {
+    dispatch(deletePoint({ id: point.id }));
+  }
 
   return (
     <Draggable
@@ -50,6 +54,7 @@ export default function Point({ point }: Props) {
           justifyContent: "center",
           cursor: "pointer",
         }}
+        onClick={deletePointHandler}
       >
         {point.count}
       </Box>

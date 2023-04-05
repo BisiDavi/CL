@@ -12,7 +12,7 @@ const PointSlice = createSlice({
   reducers: {
     addPoint(state) {
       if (state.point.length === 0) {
-        state.point = [{ id: uuidv4(), x: 200, y: 500, count: 1 }];
+        state.point = [{ id: uuidv4(), x: 300, y: 50, count: 1 }];
       } else {
         state.point = [
           ...state.point,
