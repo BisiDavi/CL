@@ -19,6 +19,7 @@ export default function CategoryList({ id, list }: Props) {
   function addCategoryList() {
     if (categoryList) {
       dispatch(updateCategoryList({ id, categoryList }));
+      setCategoryList("");
     }
   }
 
