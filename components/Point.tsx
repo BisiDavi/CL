@@ -25,7 +25,9 @@ export default function Point({ point }: Props) {
     );
 
   const pointStyle =
-    selectedCategory && selectedCategory[0].submit
+    selectedCategory &&
+    selectedCategory.length > 0 &&
+    selectedCategory[0].submit
       ? { height: "0px", width: "0px" }
       : { height: "30px", width: "30px" };
 
