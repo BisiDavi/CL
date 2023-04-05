@@ -35,7 +35,7 @@ export default function ProductCategory({ category }: ProductCategoryType) {
       nodeRef={nodeRef}
       onDrag={onDrag}
     >
-      <Box ref={nodeRef} sx={{ position: "absolute" }}>
+      <Box ref={nodeRef} sx={{ position: "absolute", width: "300px" }}>
         {category.submit ? (
           <ProductCategoryView category={category} />
         ) : (
